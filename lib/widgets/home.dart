@@ -70,9 +70,20 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: (){
+        onPressed: () async {
           // Open add page
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>AddPage()));
+          // WAITT FOR THE SECOND PAGE TO END
+          // RETRIEVE THE ITEM PASSED FROM THE SECOND PAGE
+          // in dart, whenever there is the word await (a way of process asynchronous programming)
+          // add async to the nearest function {}
+         var newItem =  await Navigator.push(context, MaterialPageRoute(builder: (context)=>AddPage()));
+
+         // 3rd) Process the item and refresh the UI
+         _todos.add(newItem);
+
+         setState(() {
+           _todos; // _todos = _todos;
+         });
         },
       ),
     );

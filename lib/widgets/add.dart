@@ -22,8 +22,15 @@ class AddPage extends StatelessWidget {
             print(nameEditingController.text);
             print(descEditingController.text);
             print(placeEditingContorller.text);
+
+            var newItem = {
+              "name":nameEditingController.text,
+              "place":placeEditingContorller.text,
+              "description":descEditingController.text
+            };
             // Return to previous page
-            Navigator.pop(context);
+            // 2) Pass the new item as second argument of navigator.pop
+            Navigator.pop(context,newItem);
 
           }, child: Text("Add new item"))
         ],
