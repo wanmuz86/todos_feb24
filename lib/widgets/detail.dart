@@ -27,7 +27,7 @@ class DetailPage extends StatelessWidget {
                   // 2 means edit
                   var respond = {
                     "index":index,
-                    "action:":1
+                    "action":1
                   };
                   // Pass it back as second parameter
                   Navigator.pop(context,respond);
