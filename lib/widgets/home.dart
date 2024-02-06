@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todos/widgets/add.dart';
+import 'package:todos/widgets/detail.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -58,6 +59,9 @@ class _HomePageState extends State<HomePage> {
                 title: Text(_todos[index]["name"]!),
                 subtitle: Text(_todos[index]["place"]!),
                 trailing: Icon(Icons.chevron_right),
+                onTap: (){
+                  Navigator.push(context,MaterialPageRoute(builder: (context)=>DetailPage()));
+                },
               ),
             );
           }
