@@ -11,26 +11,30 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  List<Map<String,String>> _todos = [
+  List<Map<String,dynamic>> _todos = [
     {
       "name":"Learn Listview",
       "place":"Online Zoom",
-      "description":"Listview, builder, Listtile, and Card"
+      "description":"Listview, builder, Listtile, and Card",
+      "completed":true
     },
     {
       "name":"Navigation",
       "place":"Online Zoom",
-      "description":"Basic navigation (push, pop), Pass data forward, pass data backward"
+      "description":"Basic navigation (push, pop), Pass data forward, pass data backward",
+      "completed":true
     },
     {
       "name":"Lunch break",
       "place":"Own place",
-      "description":"1h - 1h30 break depending on QnA"
+      "description":"1h - 1h30 break depending on QnA",
+      "completed":true
     },
     {
       "name":"Shared Preference",
       "place":"Online Zoom",
-      "description":"sharing and retrieving local data"
+      "description":"sharing and retrieving local data",
+      "completed":false
     }
   ];
 
@@ -56,6 +60,8 @@ class _HomePageState extends State<HomePage> {
             // );
             return Card(
               child: ListTile(
+
+                leading: _todos[index]["completed"] == true ? Icon(Icons.check) : SizedBox(),
                 title: Text(_todos[index]["name"]!),
                 subtitle: Text(_todos[index]["place"]!),
                 trailing: Icon(Icons.chevron_right),

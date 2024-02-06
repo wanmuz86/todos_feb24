@@ -26,7 +26,8 @@ class AddPage extends StatelessWidget {
             var newItem = {
               "name":nameEditingController.text,
               "place":placeEditingContorller.text,
-              "description":descEditingController.text
+              "description":descEditingController.text,
+              "completed":false
             };
             // Return to previous page
             // 2) Pass the new item as second argument of navigator.pop

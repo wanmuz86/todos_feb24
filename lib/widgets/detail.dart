@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class DetailPage extends StatelessWidget {
   // 1) Step 1 : Variable to store data from sender
-  Map<String,String> item;
+  Map<String,dynamic> item;
   int index;
 
   // 2) Create constructor with item is inside parameter
