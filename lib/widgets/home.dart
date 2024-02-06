@@ -39,12 +39,26 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(title: Text("To do app"),),
       body: ListView.builder(
           padding: const EdgeInsets.all(8),
+          // how many rows are there -> It has the same number of rows as the data
           itemCount: _todos.length,
+
+          // What to show on each row ->
+          // For every row (represented by index)
+          // Show a container (box/div) of colour amber, of height 50
+          // in which has a centered text labeled with the todos of each row
+          // if row/index 0 => todos[0] row/index 1 =>todos[1]
           itemBuilder: (BuildContext context, int index) {
-            return Container(
-              height: 50,
-              color: Colors.amber,
-              child: Center(child: Text('Entry: ${_todos[index]["name"]}')),
+            // return Container(
+            //   height: 50,
+            //   color: Colors.amber,
+            //   child: Center(child: Text('Entry: ${_todos[index]["name"]}')),
+            // );
+            return Card(
+              child: ListTile(
+                title: Text(_todos[index]["name"]!),
+                subtitle: Text(_todos[index]["place"]!),
+                trailing: Icon(Icons.chevron_right),
+              ),
             );
           }
       ),
