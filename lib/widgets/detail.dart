@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 class DetailPage extends StatelessWidget {
   // 1) Step 1 : Variable to store data from sender
   Map<String,String> item;
+  int index;
+
   // 2) Create constructor with item is inside parameter
-  DetailPage({required this.item});
+  DetailPage({required this.item, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +22,7 @@ class DetailPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(onPressed: (){
+                  print("To do delete for $index");
 
                 }, child: Text("Delete")),
                 ElevatedButton(onPressed: (){

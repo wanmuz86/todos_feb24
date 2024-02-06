@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: (){
                   // 3) Pass the data to second page through the constructor
                   Navigator.push(context,MaterialPageRoute(builder:
-                      (context)=>DetailPage(item: _todos[index],)));
+                      (context)=>DetailPage(item: _todos[index], index: index,)));
                 },
               ),
             );
