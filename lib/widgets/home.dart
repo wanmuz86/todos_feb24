@@ -60,7 +60,6 @@ class _HomePageState extends State<HomePage> {
             // );
             return Card(
               child: ListTile(
-
                 leading: _todos[index]["completed"] == true ? Icon(Icons.check) : SizedBox(),
                 title: Text(_todos[index]["name"]!),
                 subtitle: Text(_todos[index]["place"]!),
@@ -79,6 +78,11 @@ class _HomePageState extends State<HomePage> {
                    }
                    else {
                      //edit
+
+                     _todos[respond["index"]]["completed"] = true;
+                     setState(() {
+                       _todos;
+                     });
 
                    }
                  }

@@ -35,6 +35,13 @@ class DetailPage extends StatelessWidget {
                 }, child: Text("Delete")),
                 ElevatedButton(onPressed: (){
 
+                  var respond = {
+                    "index":index,
+                    "action":2
+                  };
+                  Navigator.pop(context,respond);
+
+
                 }, child: Text("Mark as complete"))
               ],
             )
