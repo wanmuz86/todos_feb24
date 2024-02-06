@@ -14,30 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 // Beacause the usage of Shared preference
   List<dynamic> _todos = [
-    {
-      "name":"Learn Listview",
-      "place":"Online Zoom",
-      "description":"Listview, builder, Listtile, and Card",
-      "completed":true
-    },
-    {
-      "name":"Navigation",
-      "place":"Online Zoom",
-      "description":"Basic navigation (push, pop), Pass data forward, pass data backward",
-      "completed":true
-    },
-    {
-      "name":"Lunch break",
-      "place":"Own place",
-      "description":"1h - 1h30 break depending on QnA",
-      "completed":true
-    },
-    {
-      "name":"Shared Preference",
-      "place":"Online Zoom",
-      "description":"sharing and retrieving local data",
-      "completed":false
-    }
+
   ];
 
   // Inialization of the page is done here
@@ -80,7 +57,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("To do app"),),
+      appBar: AppBar(title: const Text("To do app"),),
       body: ListView.builder(
           padding: const EdgeInsets.all(8),
           // how many rows are there -> It has the same number of rows as the data
@@ -99,10 +76,10 @@ class _HomePageState extends State<HomePage> {
             // );
             return Card(
               child: ListTile(
-                leading: _todos[index]["completed"] == true ? Icon(Icons.check) : SizedBox(),
+                leading: _todos[index]["completed"] == true ? const Icon(Icons.check) : const SizedBox(),
                 title: Text(_todos[index]["name"]!),
                 subtitle: Text(_todos[index]["place"]!),
-                trailing: Icon(Icons.chevron_right),
+                trailing: const Icon(Icons.chevron_right),
                 onTap: () async {
                   // 3) Pass the data to second page through the constructor
                  var respond = await Navigator.push(context,MaterialPageRoute(builder:
@@ -133,7 +110,7 @@ class _HomePageState extends State<HomePage> {
           }
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () async {
           // Open add page
           // WAITT FOR THE SECOND PAGE TO END

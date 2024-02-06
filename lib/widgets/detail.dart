@@ -11,7 +11,7 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Detail Page"),),
+      appBar: AppBar(title: const Text("Detail Page"),),
       body: Center(
         child: Column(
           children: [
@@ -32,7 +32,7 @@ class DetailPage extends StatelessWidget {
                   // Pass it back as second parameter
                   Navigator.pop(context,respond);
 
-                }, child: Text("Delete")),
+                }, child: const Text("Delete")),
                 ElevatedButton(onPressed: (){
 
                   var respond = {
