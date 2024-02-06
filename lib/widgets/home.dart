@@ -78,8 +78,8 @@ class _HomePageState extends State<HomePage> {
                    }
                    else {
                      //edit
-
-                     _todos[respond["index"]]["completed"] = true;
+                     // reverse the value of completed
+                     _todos[respond["index"]]["completed"] =   !_todos[respond["index"]]["completed"] ;
                      setState(() {
                        _todos;
                      });

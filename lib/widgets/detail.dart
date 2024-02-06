@@ -42,7 +42,7 @@ class DetailPage extends StatelessWidget {
                   Navigator.pop(context,respond);
 
 
-                }, child: Text("Mark as complete"))
+                }, child: Text(item["completed"] != true ? "Mark as complete" : "Unmark completion"))
               ],
             )
           ],
