@@ -12,8 +12,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-  List<Map<String,dynamic>> _todos = [
+// Beacause the usage of Shared preference 
+  List<dynamic> _todos = [
     {
       "name":"Learn Listview",
       "place":"Online Zoom",
@@ -40,6 +40,28 @@ class _HomePageState extends State<HomePage> {
     }
   ];
 
+  // Inialization of the page is done here
+  // When the page is loaded
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    loadData();
+  }
+
+  void loadData() async {
+    // Obtain shared preferences. / open file manager
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var todosString  = prefs.getString("todos");
+    if (todosString != null){
+      setState(() {
+        // transform from String to List of Map<String,dynamic>
+        // setState => refresh the UI
+        _todos = jsonDecode(todosString) ;
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
