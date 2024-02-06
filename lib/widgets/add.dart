@@ -12,9 +12,12 @@ class AddPage extends StatelessWidget {
       body: Column(
         children: [
           Text("Enter all the information"),
-          TextField(decoration: InputDecoration(hintText:"Enter item name"), controller: nameEditingController,),
-          TextField(decoration: InputDecoration(hintText:"Enter item description"), controller: descEditingController,),
-          TextField(decoration: InputDecoration(hintText:"Enter item place"), controller: placeEditingContorller,),
+          TextField(decoration: InputDecoration(hintText:"Enter item name"),
+            controller: nameEditingController,),
+          TextField(decoration: InputDecoration(hintText:"Enter item description"),
+            controller: descEditingController,),
+          TextField(decoration: InputDecoration(hintText:"Enter item place"),
+            controller: placeEditingContorller,),
           ElevatedButton(onPressed: (){
             print(nameEditingController.text);
             print(descEditingController.text);
