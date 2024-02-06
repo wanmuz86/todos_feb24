@@ -59,10 +59,23 @@ class _HomePageState extends State<HomePage> {
                 title: Text(_todos[index]["name"]!),
                 subtitle: Text(_todos[index]["place"]!),
                 trailing: Icon(Icons.chevron_right),
-                onTap: (){
+                onTap: () async {
                   // 3) Pass the data to second page through the constructor
-                  Navigator.push(context,MaterialPageRoute(builder:
+                 var respond = await Navigator.push(context,MaterialPageRoute(builder:
                       (context)=>DetailPage(item: _todos[index], index: index,)));
+                 if (respond != null){
+                   if (respond["action"] == 1){
+                     //delete
+                     _todos.removeAt(respond["index"]);
+                     setState(() {
+                       _todos;
+                     });
+                   }
+                   else {
+                     //edit
+
+                   }
+                 }
                 },
               ),
             );
@@ -78,12 +91,14 @@ class _HomePageState extends State<HomePage> {
           // add async to the nearest function {}
          var newItem =  await Navigator.push(context, MaterialPageRoute(builder: (context)=>AddPage()));
 
-         // 3rd) Process the item and refresh the UI
-         _todos.add(newItem);
+         if (newItem != null) {
+           // 3rd) Process the item and refresh the UI
+           _todos.add(newItem);
 
-         setState(() {
-           _todos; // _todos = _todos;
-         });
+           setState(() {
+             _todos; // _todos = _todos;
+           });
+         }
         },
       ),
     );

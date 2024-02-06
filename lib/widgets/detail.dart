@@ -23,6 +23,14 @@ class DetailPage extends StatelessWidget {
               children: [
                 ElevatedButton(onPressed: (){
                   print("To do delete for $index");
+                  // 1 means delete,
+                  // 2 means edit
+                  var respond = {
+                    "index":index,
+                    "action:":1
+                  };
+                  // Pass it back as second parameter
+                  Navigator.pop(context,respond);
 
                 }, child: Text("Delete")),
                 ElevatedButton(onPressed: (){
