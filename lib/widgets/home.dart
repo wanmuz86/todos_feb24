@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-// Beacause the usage of Shared preference 
+// Beacause the usage of Shared preference
   List<dynamic> _todos = [
     {
       "name":"Learn Listview",
@@ -62,6 +62,21 @@ class _HomePageState extends State<HomePage> {
       });
     }
   }
+
+  void saveData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    // SHared preference can only store basic data type
+    // String, int, double, boolean , List<String>
+    // If i am storing other data type, I can transform to String
+    // Map, Array of Map can be transformed Using jsonEncode ('dart:convert')
+    // Saving inside shared preference item _todos
+    // using filename/key "todos"
+    prefs.setString("todos", jsonEncode(_todos));
+
+    setState(() {
+      _todos; // _todos = _todos;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,6 +111,7 @@ class _HomePageState extends State<HomePage> {
                    if (respond["action"] == 1){
                      //delete
                      _todos.removeAt(respond["index"]);
+                     saveData();
                      setState(() {
                        _todos;
                      });
@@ -104,6 +120,7 @@ class _HomePageState extends State<HomePage> {
                      //edit
                      // reverse the value of completed
                      _todos[respond["index"]]["completed"] =   !_todos[respond["index"]]["completed"] ;
+                     saveData();
                      setState(() {
                        _todos;
                      });
@@ -131,19 +148,7 @@ class _HomePageState extends State<HomePage> {
 
            ///SAVE!!!
            ///// Obtain shared preferences./ file manager
-
-           final SharedPreferences prefs = await SharedPreferences.getInstance();
-           // SHared preference can only store basic data type
-           // String, int, double, boolean , List<String>
-           // If i am storing other data type, I can transform to String
-           // Map, Array of Map can be transformed Using jsonEncode ('dart:convert')
-           // Saving inside shared preference item _todos
-           // using filename/key "todos"
-           prefs.setString("todos", jsonEncode(_todos));
-
-           setState(() {
-             _todos; // _todos = _todos;
-           });
+           saveData();
          }
         },
       ),
