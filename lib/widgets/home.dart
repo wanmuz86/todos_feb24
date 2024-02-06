@@ -1,7 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:todos/widgets/add.dart';
 import 'package:todos/widgets/detail.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -104,6 +106,18 @@ class _HomePageState extends State<HomePage> {
          if (newItem != null) {
            // 3rd) Process the item and refresh the UI
            _todos.add(newItem);
+
+           ///SAVE!!!
+           ///// Obtain shared preferences./ file manager
+
+           final SharedPreferences prefs = await SharedPreferences.getInstance();
+           // SHared preference can only store basic data type
+           // String, int, double, boolean , List<String>
+           // If i am storing other data type, I can transform to String
+           // Map, Array of Map can be transformed Using jsonEncode ('dart:convert')
+           // Saving inside shared preference item _todos
+           // using filename/key "todos"
+           prefs.setString("todos", jsonEncode(_todos));
 
            setState(() {
              _todos; // _todos = _todos;
