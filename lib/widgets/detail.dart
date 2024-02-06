@@ -16,6 +16,17 @@ class DetailPage extends StatelessWidget {
             Text(item["name"]!),
             Text(item["description"]!),
             Text(item["place"]!),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(onPressed: (){
+
+                }, child: Text("Delete")),
+                ElevatedButton(onPressed: (){
+
+                }, child: Text("Mark as complete"))
+              ],
+            )
           ],
         ),
       ),
